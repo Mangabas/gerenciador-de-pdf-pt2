@@ -249,7 +249,7 @@ public class CollectionMethods implements Serializable {
     public static void listByAuthor(List<String> allCollections, String author) throws IOException, ClassNotFoundException {
         List <ArquivoPDF> authors;
 
-        for (String string : allCollections){
+        for (String string : distinctList(allCollections)){
             authors = (List<ArquivoPDF>) SimpleSerializationLib.readObjectFromFile(System.getProperty("user.dir") + System.getProperty("file.separator") + "bin" + System.getProperty("file.separator")+ "Collections" + System.getProperty("file.separator") + string +".ser");
             for (ArquivoPDF arquivoPDF: authors){
                 if(arquivoPDF.getAuthor().toLowerCase().equals(author)){
@@ -272,14 +272,15 @@ public class CollectionMethods implements Serializable {
         List <ArquivoPDF> pdfs;
         List <ArquivoPDF> typeFilter = new ArrayList<>();
 
-        for (String string : allCollections){
+        for (String string : distinctList(allCollections)){
             pdfs = (List<ArquivoPDF>) SimpleSerializationLib.readObjectFromFile(System.getProperty("user.dir") + System.getProperty("file.separator") + "bin" + System.getProperty("file.separator")+ "Collections" + System.getProperty("file.separator") + string +".ser");
             for (ArquivoPDF arquivoPDF: pdfs){
-                if(arquivoPDF.getType().toLowerCase().equals(typeR)){
-                    System.out.println(arquivoPDF);
+                if(arquivoPDF.getType().equals(typeR)){
+                    typeFilter.add(arquivoPDF);
                 }
             }
         }
+        distinctList(typeFilter).forEach(System.out::println);
     }
 }
 
