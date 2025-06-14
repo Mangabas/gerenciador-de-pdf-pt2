@@ -55,19 +55,13 @@ public class CollectionMethods implements Serializable {
         while (!(title.equals("sair"))){
             System.out.println("digite o titulo das entradas ou 'sair' para finalizar ");
             title = scanner.nextLine();
-            titles.add(title);
+            titles.add(title.toLowerCase());
         }
-        distinctList(titles).forEach(System.out::println);
 
-        List<ArquivoPDF> typeList = list.stream()
-                .limit(limit)
-                .filter(x -> x.getType().equals(typeR))
-                .limit(limit)
-                .collect(Collectors.toList());
 
         List<ArquivoPDF> filterList = new ArrayList<>();
-        for (ArquivoPDF arquivo:typeList){
-            if(titles.contains(arquivo.getTitle().toLowerCase())){
+        for (ArquivoPDF arquivo:list){
+            if(titles.contains(arquivo.getTitle().toLowerCase()) && arquivo.getType().equals(typeR)){
                 filterList.add(arquivo);
             }
         }
