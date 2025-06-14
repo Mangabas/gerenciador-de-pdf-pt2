@@ -56,6 +56,9 @@ Um sistema de gerenciamento de biblioteca digital desenvolvido em Java que permi
 
 ## 🚀 Como Usar
 
+### Observação importante
+-NÃO UTILIZAR CARACTERES ESPECIAIS. Devido ao estilo adotador de serialização, podem acontecer alguns erros ao utilizar caracteres especiais
+
 ### Compilação
 ```bash
 javac -cp . Main.java biblioteca/*.java models/*.java utils/*.java exception/*.java
