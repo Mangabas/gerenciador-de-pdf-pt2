@@ -17,6 +17,8 @@ import java.util.stream.Collectors;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
+import static java.lang.StringUTF16.toLowerCase;
+
 public class CollectionMethods implements Serializable {
 
     public static <T> List<T> distinctList(List<T> input) {
@@ -67,7 +69,7 @@ public class CollectionMethods implements Serializable {
 
         List<ArquivoPDF> filterList = new ArrayList<>();
         for (ArquivoPDF arquivo:typeList){
-            if(titles.contains(arquivo.getTitle())){
+            if(titles.contains(arquivo.getTitle().toLowerCase())){
                 filterList.add(arquivo);
             }
         }
@@ -111,7 +113,7 @@ public class CollectionMethods implements Serializable {
         List<ArquivoPDF> currentCollection = (List<ArquivoPDF>) SimpleSerializationLib.readObjectFromFile(System.getProperty("user.dir") + System.getProperty("file.separator") + "bin" + System.getProperty("file.separator")+ "Collections" + System.getProperty("file.separator") + collection +".ser");
         for (ArquivoPDF arquivoPDF : currentCollection) {
                  for (ArquivoPDF arquivoPDF1: list){
-                     if(arquivoPDF1.getTitle().equals(title) && arquivoPDF1.getType().equals(typeR)){
+                     if(arquivoPDF1.getTitle().toLowerCase().equals(title) && arquivoPDF1.getType().equals(typeR)){
                          tempAdditions.add(arquivoPDF1);
                  }
 
@@ -139,7 +141,7 @@ public class CollectionMethods implements Serializable {
         List<ArquivoPDF> currentCollection = (List<ArquivoPDF>) SimpleSerializationLib.readObjectFromFile(filePath);
 
         List<ArquivoPDF> filteredCollection = currentCollection.stream()
-                .filter(arquivoPDF -> !arquivoPDF.getTitle().equals(title))
+                .filter(arquivoPDF -> !arquivoPDF.getTitle().toLowerCase().equals(title))
                 .distinct()
                 .collect(Collectors.toList());
 
@@ -258,7 +260,7 @@ public class CollectionMethods implements Serializable {
         for (String string : allCollections){
             authors = (List<ArquivoPDF>) SimpleSerializationLib.readObjectFromFile(System.getProperty("user.dir") + System.getProperty("file.separator") + "bin" + System.getProperty("file.separator")+ "Collections" + System.getProperty("file.separator") + string +".ser");
             for (ArquivoPDF arquivoPDF: authors){
-                if(arquivoPDF.getAuthor().equals(author)){
+                if(arquivoPDF.getAuthor().toLowerCase().equals(author)){
                     System.out.println(arquivoPDF);;
                 }
             }
@@ -281,7 +283,7 @@ public class CollectionMethods implements Serializable {
         for (String string : allCollections){
             pdfs = (List<ArquivoPDF>) SimpleSerializationLib.readObjectFromFile(System.getProperty("user.dir") + System.getProperty("file.separator") + "bin" + System.getProperty("file.separator")+ "Collections" + System.getProperty("file.separator") + string +".ser");
             for (ArquivoPDF arquivoPDF: pdfs){
-                if(arquivoPDF.getType().equals(typeR)){
+                if(arquivoPDF.getType().toLowerCase().equals(typeR)){
                     System.out.println(arquivoPDF);
                 }
             }
