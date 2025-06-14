@@ -139,8 +139,8 @@ javac -cp . Main.java biblioteca/*.java models/*.java utils/*.java exception/*.j
 java Main create-lib MinhaBlioteca
 
 # 3. Adicionar documentos
-java Main add-book "João Silva" "Programação Java" "Conceitos Avançados" "Computação" 2023 "/caminho/para/livro.pdf"
-java Main add-slide "Introdução à POO" "Programação" "Prof. Maria" "/caminho/para/slides.pdf"
+java Main add-book "joao Silva" "Programacao Java" "Conceitos Avançados" "Computacao" 2023 "/caminho/para/livro.pdf"
+java Main add-slide "introducao à POO" "Programacao" "Prof. Maria" "/caminho/para/slides.pdf"
 
 # 4. Listar documentos
 java Main list-pdf
