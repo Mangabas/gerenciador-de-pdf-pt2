@@ -86,7 +86,7 @@ public abstract class ArquivoPDF implements Serializable {
             setFinalPath(end.toString());
 
 
-        } catch (IOException e) {
+        } catch (NoSuchFileException e){} catch (Exception e) {
             System.err.println("Erro ao copiar o arquivo: " + e.getMessage());
             System.out.println(originString + "\n" + endString + "\n" + type);
             e.printStackTrace();
