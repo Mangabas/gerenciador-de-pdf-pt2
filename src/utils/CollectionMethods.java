@@ -17,8 +17,6 @@ import java.util.stream.Collectors;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
-import static java.lang.StringUTF16.toLowerCase;
-
 public class CollectionMethods implements Serializable {
 
     public static <T> List<T> distinctList(List<T> input) {
