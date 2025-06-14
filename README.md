@@ -57,7 +57,7 @@ Um sistema de gerenciamento de biblioteca digital desenvolvido em Java que permi
 ## 🚀 Como Usar
 
 ### Observação importante
--NÃO UTILIZAR CARACTERES ESPECIAIS. Devido ao estilo adotador de serialização, podem acontecer alguns erros ao utilizar caracteres especiais
+-NÃO UTILIZAR CARACTERES ESPECIAIS E EVITAR LETRAS MAIUSCULAS. Devido ao estilo adotador de serialização, podem acontecer alguns erros ao utilizar caracteres especiais
 
 ### Compilação
 ```bash
