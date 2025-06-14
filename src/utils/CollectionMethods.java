@@ -57,7 +57,7 @@ public class CollectionMethods implements Serializable {
             title = scanner.nextLine();
             titles.add(title);
         }
-        titles.forEach(System.out::println);
+        distinctList(titles).forEach(System.out::println);
 
         List<ArquivoPDF> typeList = list.stream()
                 .limit(limit)
@@ -254,30 +254,25 @@ public class CollectionMethods implements Serializable {
 
     public static void listByAuthor(List<String> allCollections, String author) throws IOException, ClassNotFoundException {
         List <ArquivoPDF> authors;
-        List <ArquivoPDF> authorsFilter = new ArrayList<>();
 
         for (String string : allCollections){
             authors = (List<ArquivoPDF>) SimpleSerializationLib.readObjectFromFile(System.getProperty("user.dir") + System.getProperty("file.separator") + "bin" + System.getProperty("file.separator")+ "Collections" + System.getProperty("file.separator") + string +".ser");
             for (ArquivoPDF arquivoPDF: authors){
                 if(arquivoPDF.getAuthor().equals(author)){
-                    authorsFilter.add(arquivoPDF);
+                    System.out.println(arquivoPDF);;
                 }
             }
         }
 
-        authorsFilter.forEach(System.out::println);
     }
 
     public static void listBytype(List<String> allCollections, String type) throws IOException, ClassNotFoundException {
         String typeR = "";
-        if (type.toLowerCase().equals("book") || type.toLowerCase().equals("livro")){
-            typeR = "Book";
-        } else if (type.toLowerCase().equals("slide")) {
-            typeR = "Slide";
-        } else if (type.toLowerCase().equals("notas") || type.toLowerCase().equals("notes")) {
-            typeR = "Notes";
-        }else{
-            System.out.println("Erro ao inicializar tipo");
+        switch (type.toLowerCase()) {
+            case "book", "livro" -> typeR = "Book";
+            case "slide" -> typeR = "Slide";
+            case "notas", "notes" -> typeR = "Notes";
+            default -> System.out.println("Erro ao inicializar tipo");
         }
 
         List <ArquivoPDF> pdfs;
